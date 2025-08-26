@@ -2,25 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jar Page</title>
+  <title>Magical Jar</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+
     body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffdee9, #b5fffc);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f9f9f9;
+      font-family: 'Quicksand', sans-serif;
+      overflow: hidden;
     }
-    img {
-      max-width: 300px;
-      height: auto;
+
+    .container {
+      position: relative;
+      text-align: center;
+    }
+
+    /* Jar Image */
+    .jar {
+      width: 250px;
+      transition: transform 0.2s;
+    }
+
+    .jar:hover {
+      animation: shake 0.5s;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      20% { transform: translate(-4px, 0) rotate(-5deg); }
+      40% { transform: translate(4px, 0) rotate(5deg); }
+      60% { transform: translate(-4px, 0) rotate(-5deg); }
+      80% { transform: translate(4px, 0) rotate(5deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    /* Floating notes */
+    .note {
+      position: absolute;
+      font-size: 28px;
+      color: #ff69b4;
+      animation: float 5s infinite ease-in;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-300px) scale(1.5); opacity: 0; }
+    }
+
+    h1 {
+      color: #333;
+      margin-top: 20px;
+      font-size: 28px;
     }
   </style>
 </head>
 <body>
-  <!-- Change the file name below if needed -->
-  <img src="jar.png" alt="Jar Image">
+  <div class="container">
+    <!-- Jar Image (make sure jar.png is uploaded in same folder as index.html) -->
+    <img src="jar.png" alt="Magical Jar" class="jar">
+    <h1>My Magical Jar</h1>
+
+    <!-- Music Notes -->
+    <div class="note" style="left: 20px; animation-delay: 0s;">🎵</div>
+    <div class="note" style="left: 80px; animation-delay: 1s;">🎶</div>
+    <div class="note" style="left: 140px; animation-delay: 2s;">🎼</div>
+    <div class="note" style="left: 200px; animation-delay: 3s;">🎵</div>
+    <div class="note" style="left: 260px; animation-delay: 4s;">🎶</div>
+  </div>
 </body>
 </html>
