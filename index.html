@@ -2,77 +2,107 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Magical Jar</title>
+  <title>Love Jar</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
-
     body {
       margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #ffdee9, #b5fffc);
+      padding: 0;
+      background-color: #F2BFDD;
+      font-family: 'Cursive', sans-serif; /* Replace with the font you want */
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      font-family: 'Quicksand', sans-serif;
-      overflow: hidden;
-    }
-
-    .container {
-      position: relative;
-      text-align: center;
-    }
-
-    /* Jar Image */
-    .jar {
-      width: 250px;
-      transition: transform 0.2s;
-    }
-
-    .jar:hover {
-      animation: shake 0.5s;
-    }
-
-    @keyframes shake {
-      0% { transform: translate(0, 0) rotate(0deg); }
-      20% { transform: translate(-4px, 0) rotate(-5deg); }
-      40% { transform: translate(4px, 0) rotate(5deg); }
-      60% { transform: translate(-4px, 0) rotate(-5deg); }
-      80% { transform: translate(4px, 0) rotate(5deg); }
-      100% { transform: translate(0, 0) rotate(0deg); }
-    }
-
-    /* Floating notes */
-    .note {
-      position: absolute;
-      font-size: 28px;
-      color: #ff69b4;
-      animation: float 5s infinite ease-in;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-300px) scale(1.5); opacity: 0; }
+      justify-content: center;
+      height: 100vh;
     }
 
     h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
       color: #333;
+    }
+
+    .jar {
+      width: 250px;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+
+    /* Shake animation */
+    .shake {
+      animation: shake 0.6s;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(0px, 0px) rotate(0deg); }
+      20% { transform: translate(-5px, 0px) rotate(-5deg); }
+      40% { transform: translate(5px, 0px) rotate(5deg); }
+      60% { transform: translate(-5px, 0px) rotate(-5deg); }
+      80% { transform: translate(5px, 0px) rotate(5deg); }
+      100% { transform: translate(0px, 0px) rotate(0deg); }
+    }
+
+    button {
       margin-top: 20px;
-      font-size: 28px;
+      padding: 10px 20px;
+      background-color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2em;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .note {
+      margin-top: 30px;
+      padding: 15px 25px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      font-size: 1.2em;
+      color: #444;
+      display: none;
+      max-width: 300px;
+      text-align: center;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Jar Image (make sure jar.png is uploaded in same folder as index.html) -->
-    <img src="jar.png" alt="Magical Jar" class="jar">
-    <h1>My Magical Jar</h1>
+  <h1>100 reasons why I love you</h1>
+  <img src="ChatGPT Image Aug 26, 2025 at 10_08_26 PM.png" alt="Notes Jar" class="jar" id="jar">
+  <button id="pressBtn">Press me</button>
+  <div class="note" id="note">💌 You make me smile every day!</div>
 
-    <!-- Music Notes -->
-    <div class="note" style="left: 20px; animation-delay: 0s;">🎵</div>
-    <div class="note" style="left: 80px; animation-delay: 1s;">🎶</div>
-    <div class="note" style="left: 140px; animation-delay: 2s;">🎼</div>
-    <div class="note" style="left: 200px; animation-delay: 3s;">🎵</div>
-    <div class="note" style="left: 260px; animation-delay: 4s;">🎶</div>
-  </div>
+  <script>
+    const jar = document.getElementById('jar');
+    const btn = document.getElementById('pressBtn');
+    const note = document.getElementById('note');
+
+    btn.addEventListener('click', () => {
+      // Add shake animation
+      jar.classList.add('shake');
+
+      // Remove animation class after it ends
+      setTimeout(() => {
+        jar.classList.remove('shake');
+      }, 600);
+
+      // Show note after shake
+      setTimeout(() => {
+        note.style.display = 'block';
+      }, 700);
+    });
+  </script>
 </body>
 </html>
