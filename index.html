@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>100 Reasons I Love You</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #fffafc;
+      color: #444;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      margin-top: 30px;
+      color: #ff7b9c;
+    }
+    #jar {
+      margin: 40px auto;
+      width: 200px;
+      height: 280px;
+      background: #fde2e4;
+      border: 4px solid #ffafcc;
+      border-radius: 100px 100px 40px 40px;
+      position: relative;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    #lid {
+      width: 140px;
+      height: 30px;
+      background: #bde0fe;
+      border: 3px solid #a2d2ff;
+      border-radius: 15px;
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    #note {
+      margin-top: 20px;
+      font-size: 1.2em;
+      padding: 15px;
+      border-radius: 12px;
+      background: #caffbf;
+      display: inline-block;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    button {
+      background: #a2d2ff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1em;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: scale(1.05);
+      background: #ffafcc;
+    }
+    @keyframes shake {
+      0% { transform: translate(1px, 1px) rotate(0deg); }
+      20% { transform: translate(-1px, -2px) rotate(-1deg); }
+      40% { transform: translate(-3px, 0px) rotate(1deg); }
+      60% { transform: translate(3px, 2px) rotate(0deg); }
+      80% { transform: translate(1px, -1px) rotate(1deg); }
+      100% { transform: translate(-1px, 2px) rotate(-1deg); }
+    }
+    .shake {
+      animation: shake 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <h1>💌 100 Reasons I Love You 💌</h1>
+  <div id="jar">
+    <div id="lid"></div>
+  </div>
+  <button onclick="openNote()">Shake the Jar ✨</button>
+  <div id="note"></div>
+
+  <script>
+    const notes = [
+      "You make me laugh until my stomach hurts.",
+      "I love how you always check if I’m okay.",
+      "You give the warmest hugs ever.",
+      "Your smile makes every day brighter.",
+      "You actually listen to me when I ramble.",
+      "You believe in me more than I do sometimes.",
+      "The way you care about little things melts me.",
+      "You make even the most boring days fun.",
+      "You’re my safe place.",
+      "I love the way you say my name."
+    ];
+
+    let usedNotes = [];
+
+    function openNote() {
+      const jar = document.getElementById("jar");
+      jar.classList.add("shake");
+      setTimeout(() => jar.classList.remove("shake"), 500);
+
+      if (usedNotes.length === notes.length) {
+        document.getElementById("note").innerText = "No more notes... but I still love you endlessly 💖";
+        document.getElementById("note").style.opacity = 1;
+        return;
+      }
+
+      let index;
+      do {
+        index = Math.floor(Math.random() * notes.length);
+      } while (usedNotes.includes(index));
+
+      usedNotes.push(index);
+      const note = notes[index];
+      const noteDiv = document.getElementById("note");
+      noteDiv.innerText = note;
+      noteDiv.style.opacity = 1;
+    }
+  </script>
+</body>
+</html>
